@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
 
+
 class UserProfileManager(BaseUserManager):
     """Manger for profiles"""
     def create_user(self, email, name, password=None):
@@ -11,14 +12,14 @@ class UserProfileManager(BaseUserManager):
             raise ValueError('User must have an eamil address')
 
         email = self.normalize_email(email)
-        user = self.model(email, name=name)
+        user = self.model(email=email, name=name)
 
         user.set_password(password)
         user.save(using=self._db)
 
         return user
 
-    def create_superuser(Self, email, name, password):
+    def create_superuser(self, email, name, password):
         """Create and save a new super user"""
         user = self.create_user(email, name, password)
 
