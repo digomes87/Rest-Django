@@ -37,7 +37,7 @@ class HelloApiView(APIView):
 
     def patch(self, request, pk=None):
         """Handle a partial update of an object"""
-        return Response({'mehots':'PATCH'})
+        return Response({'method':'PATCH'})
 
     def delete(self, request, pk=None):
         """Delete object"""
